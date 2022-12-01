@@ -5,21 +5,22 @@ let input = Utils.getInput();
 input = input.split("\n");
 
 
-let groups = [];
+let elfs = [];
 
-let subGroup = [];
+
+let calories = [];
 input.forEach((item) => {
     if (item === "\r") {
-        subGroup = subGroup.map((item) => parseInt(item));
-        groups.push(subGroup);
-        subGroup = [];
+        calories = calories.map((item) => parseInt(item));
+        elfs.push(calories);
+        calories = [];
     } else {
-        subGroup.push(item);
+        calories.push(item);
     }
 });
 
-subGroup = subGroup.map((item) => parseInt(item));
-groups.push(subGroup);
+calories = calories.map((item) => parseInt(item));
+elfs.push(calories);
 
 const getHighestValue = (groups) => {
     let highestValue = 0;
@@ -43,14 +44,13 @@ const getHighestValue = (groups) => {
     return highestValue;
 }
 
-const topThree = (groups) => {
+const getTopThree = (groups) => {
     let total = 0;
     for (let i = 0; i < 3; i++) {
-        const hv = getHighestValue(groups);
-        total += hv;
+        total += getHighestValue(groups);
     }
     return total;
 }
 
 
-console.log(topThree(groups));
+console.log(getTopThree(elfs));
