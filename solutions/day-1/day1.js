@@ -22,6 +22,8 @@ input.forEach((item) => {
 calories = calories.map((item) => parseInt(item));
 elfs.push(calories);
 
+console.log(elfs);
+
 const getHighestValue = (groups) => {
     let highestValue = 0;
     let highestValueIndex = 0;
