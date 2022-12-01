@@ -7,8 +7,8 @@ class Utils {
         return Utils.getInput().split("\r");
     }
 
-    static getExampleInput(part) {
-        return fs.readFileSync(`./input/example-p${part}.txt`, "utf8");
+    static getExampleInput() {
+        return fs.readFileSync(`./input/example.txt`, "utf8");
     }
 
     static getExampleInputAsArray(part) {

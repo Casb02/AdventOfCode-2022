@@ -1,58 +1,28 @@
-import {Utils} from "../../index.js";
+import fs from "fs";
 
-let input = Utils.getInput();
-// let input = Utils.getExampleInput(1);
+let input = fs.readFileSync("./input/input.txt", "utf8");
 input = input.split("\n");
 
+input = input.map((x) => parseInt(x));
 
 let elfs = [];
 
-
-let calories = [];
-input.forEach((item) => {
-    if (item === "\r") {
-        calories = calories.map((item) => parseInt(item));
-        elfs.push(calories);
-        calories = [];
-    } else {
-        calories.push(item);
+for (let i = 0; i < input.length; i++) {
+    if (isNaN(input[i])) {
+        elfs.push(input.slice(0, i).reduce((a, b) => a + b, 0));
+        input = input.slice(i + 1);
+        i = 0;
     }
-});
-
-calories = calories.map((item) => parseInt(item));
-elfs.push(calories);
-
-console.log(elfs);
-
-const getHighestValue = (groups) => {
-    let highestValue = 0;
-    let highestValueIndex = 0;
-    for (let items in groups) {
-        let group = groups[items];
-
-        let total = 0;
-        for (let item in group) {
-            total += group[item];
-        }
-
-        if (total > highestValue) {
-            highestValue = total;
-            highestValueIndex = items;
-        }
-    }
-
-    groups.splice(highestValueIndex, 1);
-
-    return highestValue;
 }
 
-const getTopThree = (groups) => {
-    let total = 0;
+const getTopThree = (arr) => {
+    let result = 0;
     for (let i = 0; i < 3; i++) {
-        total += getHighestValue(groups);
+        result += Math.max(...arr);
+        arr.splice(arr.indexOf(Math.max(...arr)), 1);
     }
-    return total;
+    return result;
 }
 
-
-console.log(getTopThree(elfs));
+console.log("Part 1: " + Math.max(...elfs));
+console.log("Part 2: " + getTopThree(elfs));

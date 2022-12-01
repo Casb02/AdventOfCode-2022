@@ -1,0 +1,9 @@
+{
+  "name": "AdventOfCode-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Casb02/AdventOfCode-2022.git",
+  "author": "Cas Bookamp <casb0002@gmail.com>",
+  "license": "MIT",
+  "type": "module"
+}
