@@ -7,7 +7,6 @@ input = input.split("\n");
 
 let groups = [];
 
-// if the item is a '\r' then we have reached the end of a group
 let subGroup = [];
 input.forEach((item) => {
     if (item === "\r") {
@@ -21,10 +20,6 @@ input.forEach((item) => {
 
 subGroup = subGroup.map((item) => parseInt(item));
 groups.push(subGroup);
-
-// console.log(groups);
-
-//get from all groups the subgroup with the highest value
 
 const getHighestValue = (groups) => {
     let highestValue = 0;
