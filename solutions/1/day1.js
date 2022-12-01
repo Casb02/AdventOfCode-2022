@@ -15,14 +15,7 @@ for (let i = 0; i < input.length; i++) {
     }
 }
 
-const getTopThree = (arr) => {
-    let result = 0;
-    for (let i = 0; i < 3; i++) {
-        result += Math.max(...arr);
-        arr.splice(arr.indexOf(Math.max(...arr)), 1);
-    }
-    return result;
-}
+elfs.sort((a, b) => b - a);
 
 console.log("Part 1: " + Math.max(...elfs));
-console.log("Part 2: " + getTopThree(elfs));
+console.log("Part 2: " + elfs.slice(0, 3).reduce((a, b) => a + b, 1));
